@@ -41,23 +41,61 @@ class Truck extends Vehicle implements AbleToTow {
       this.wheels = wheels
     } else {
       this.wheels = [new Wheel(25, 'GoodYear'), new Wheel(25, 'GoodYear'), new Wheel(25, 'GoodYear'), new Wheel(25, 'GoodYear')]
-    }
+    };
   }
 
 
     // TODO: Implement the tow method from the AbleToTow interface
-  tow(vehicle: Truck | Motorbike | Car): void {
-    // TODO: Get the make an model of the vehicle if it exists
+    tow(vehicle: Truck | Motorbike | Car): void {
+      if ("make" in vehicle && "model" in vehicle && "weight" in vehicle) {
+        // Now TypeScript knows that vehicle has these properties
+        let make = vehicle.make;
+        let model = vehicle.model;
     
-    // TODO: Check if the vehicle's weight is less than or equal to the truck's towing capacity
-    // TODO: If it is, log that the vehicle is being towed
-    // TODO: If it is not, log that the vehicle is too heavy to be towed
-  }
+        // Check if the vehicle's weight is less than or equal to the truck's towing capacity
+        if (vehicle.weight <= this.towingCapacity) {
+          console.log(`The ${make} ${model} is being towed.`);
+        } else {
+          console.log(`The vehicle is too heavy to be towed!`);
+        }
+      } else {
+        console.log(`This vehicle doesn't exist or lacks the required properties!`);
+      }
+    }
 
-  // TODO: Override the printDetails method from the Vehicle class
-    // TODO: The method should call the printDetails method of the parent class
-    // TODO: The method should log the details of the Truck
-    // TODO: The details should include the VIN, make, model, year, weight, top speed, color, towing capacity, and wheels
+
+// Override the printDetails method from the Vehicle class
+override printDetails(): void {
+  // Call the printDetails method of the parent class, Vehicle
+  super.printDetails();
+  
+  // Print details of the Truck class
+  console.log(
+    `VIN: ${this.vin}
+     COLOR: ${this.color}
+     MAKE: ${this.make}
+     MODEL: ${this.model}
+     YEAR: ${this.year}
+     WEIGHT: ${this.weight} lbs
+     TOP SPEED: ${this.topSpeed} mph
+     TOWING CAPACITY: ${this.towingCapacity} torque
+     Wheels: ${this.wheels.length}`
+  );
+
+  // Print details of the wheels
+  console.log(
+    `Wheel 1: ${this.wheels[0].getDiameter} inch with a ${this.wheels[0].getTireBrand} tire`
+  );
+  console.log(
+    `Wheel 2: ${this.wheels[1].getDiameter} inch with a ${this.wheels[1].getTireBrand} tire`
+  );
+  console.log(
+    `Wheel 3: ${this.wheels[2].getDiameter} inch with a ${this.wheels[2].getTireBrand} tire`
+  );
+  console.log(
+    `Wheel 4: ${this.wheels[3].getDiameter} inch with a ${this.wheels[3].getTireBrand} tire`
+  );
+}
 }
 
 // Export the Truck class as the default export
