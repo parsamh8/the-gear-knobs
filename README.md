@@ -1,6 +1,6 @@
 ## The GearKnobs
 
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]
+  ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 # Description
 The GearKnobs is a feature-rich Node.js Command Line Interface (CLI) application designed to allow users to create, customize, and manage a variety of vehicle types, such as cars, trucks, and motorbikes. This application leverages the power of TypeScript and follows Object-Oriented Programming (OOP) principles to ensure a clean, organized, and scalable code structure.
